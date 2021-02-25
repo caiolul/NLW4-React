@@ -4,6 +4,7 @@ import { CompletChallenges } from "../components/CompletChallenges";
 import { Countdown } from "../components/Countdown";
 import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from "../components/Profile";
+import { CountdownProvider } from "../contexts/CountdownContexts";
 import style from "../styles/pages/Home.module.css";
 
 export default function Home() {
@@ -13,16 +14,18 @@ export default function Home() {
         <title>Inicio | Move.it</title>
       </Head>
       <ExperienceBar></ExperienceBar>
-      <section>
-        <div>
-          <Profile></Profile>
-          <CompletChallenges></CompletChallenges>
-          <Countdown></Countdown>
-        </div>
-        <div>
-          <ChallengeBox></ChallengeBox>
-        </div>
-      </section>
+      <CountdownProvider>
+        <section>
+          <div>
+            <Profile></Profile>
+            <CompletChallenges></CompletChallenges>
+            <Countdown></Countdown>
+          </div>
+          <div>
+            <ChallengeBox></ChallengeBox>
+          </div>
+        </section>
+      </CountdownProvider>
     </div>
   );
 }
