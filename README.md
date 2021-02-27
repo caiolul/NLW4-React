@@ -18,7 +18,7 @@ Exercise 👁
 ![Alt Text](https://i.imgur.com/spSH9GN.png)
 
 LevelUp 🖐
-![Alt Text](https://i.imgur.com/spSH9GN.png)
+![Alt Text](https://i.imgur.com/2tgXTQJ.png)
 
 ## Run
 
