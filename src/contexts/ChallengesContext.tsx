@@ -2,6 +2,7 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import challenges from "../../challenges.json";
 import Cookie from "js-cookie";
 import { LevelUpModal } from "../components/LevelUpModal";
+import { UserGithubForm } from "../components/UserGithubForm";
 
 interface Challenge {
   type: "body" | "eye";
@@ -43,6 +44,7 @@ export function ChallengesProvider({
   const [activeChallenge, setActiveChallenge] = useState(null);
 
   const [isLevelUpModal, setIsLevelUpModal] = useState(false);
+  const [isUserGithub, setIsUserGithub] = useState(true);
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -74,6 +76,7 @@ export function ChallengesProvider({
       });
     }
   }
+  function getUserGithub() {}
   function resetChallengeValue() {
     setActiveChallenge(null);
   }
@@ -112,6 +115,7 @@ export function ChallengesProvider({
       }}
     >
       {children}
+      {isUserGithub && <UserGithubForm></UserGithubForm>}
       {isLevelUpModal && <LevelUpModal></LevelUpModal>}
     </ChallengesContext.Provider>
   );
