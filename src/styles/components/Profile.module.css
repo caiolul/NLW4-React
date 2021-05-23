@@ -17,6 +17,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--title);
+  padding-left: 1rem;
 }
 
 .profileContainer div p {
