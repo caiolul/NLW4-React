@@ -37,7 +37,7 @@ export function ChallengesProvider({
   ...rest
 }: ChallengesProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1);
-  const [session] = useSession();
+  const [session, loading] = useSession();
   const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0
   );
@@ -121,7 +121,10 @@ export function ChallengesProvider({
       }}
     >
       {children}
-      {!session && isUserGithub && <UserGithubForm></UserGithubForm>}
+
+      {!loading && !session && isUserGithub && (
+        <UserGithubForm></UserGithubForm>
+      )}
 
       {isLevelUpModal && <LevelUpModal></LevelUpModal>}
     </ChallengesContext.Provider>
