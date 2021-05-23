@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
+import { useSession } from "next-auth/client";
 import challenges from "../../challenges.json";
 import Cookie from "js-cookie";
 import { LevelUpModal } from "../components/LevelUpModal";
@@ -20,6 +21,7 @@ interface ChallengesContextData {
   levelUp: () => void;
   resetChallengeValue: () => void;
   closeLevelUpModal: () => void;
+  getUserGithub: () => void;
 }
 interface ChallengesProviderProps {
   children: ReactNode;
@@ -35,6 +37,7 @@ export function ChallengesProvider({
   ...rest
 }: ChallengesProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1);
+  const [session] = useSession();
   const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0
   );
@@ -76,7 +79,9 @@ export function ChallengesProvider({
       });
     }
   }
-  function getUserGithub() {}
+  function getUserGithub() {
+    setIsUserGithub(false);
+  }
   function resetChallengeValue() {
     setActiveChallenge(null);
   }
@@ -112,10 +117,12 @@ export function ChallengesProvider({
         resetChallengeValue,
         challengeCompleteButton,
         closeLevelUpModal,
+        getUserGithub,
       }}
     >
       {children}
-      {isUserGithub && <UserGithubForm></UserGithubForm>}
+      {!session && isUserGithub && <UserGithubForm></UserGithubForm>}
+
       {isLevelUpModal && <LevelUpModal></LevelUpModal>}
     </ChallengesContext.Provider>
   );
