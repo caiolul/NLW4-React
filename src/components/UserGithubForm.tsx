@@ -22,7 +22,7 @@ export function UserGithubForm() {
               <a
                 href={`/api/auth/signin`}
                 onClick={(): Promise<SignInResponse> =>
-                  signIn("github", { callbackUrl: "http://localhost:3000/" })
+                  signIn("github", { callbackUrl: "web-nlw4.vercel.app" })
                 }
               >
                 Login

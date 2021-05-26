@@ -24,7 +24,7 @@ self.addEventListener('push',  (event) => {
   event?.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.message,
-      icon: '/favicon.png'
+      icon: '/icons/android-chrome-192x192.png'
     })
   )
 })
